@@ -1,0 +1,63 @@
+### jQuery课程大纲
+- day1 : jQuery选择器
+	- id 
+	- class
+	- element
+	- *
+	- 后代
+	- 过滤
+	- 筛选
+	- ...
+- day2 : jQuery动画
+	- show
+	- hide
+	- toggle
+	- slideDown
+	- slideUp
+	- slideToggle
+	- fadeIn
+	- fadeOut
+	- fadeTo
+	- fadeToggle
+- day3 : jQuery入口函数的处理,jQuery原型对象上的主要方法
+	- 入口参数
+		- 函数
+		- ...
+	- constructor
+	- version
+	- selector
+	- eq
+	- get
+	- toArray
+	- push
+	- splice
+	- sort
+	- ready
+	- init
+	- first
+	- last
+	- each
+	- map
+- day4 : jQuery操作DOM的相关方法处理
+	- appendTo
+	- prependTo
+	- append
+	- prepend
+	- empty
+	- remove
+	- text
+	- html
+- day5 : jQuery操作CSS相关方法处理
+	- attr
+	- removeAttr
+	- prop
+	- removeProp
+	- hasStyle
+	- css
+	- val
+	- hasClass
+	- addClass
+	- removeClass
+	- toggleClass
+- day6 : jQuery操作事件相关方法处理
+- day7 : 焦点图啥的
