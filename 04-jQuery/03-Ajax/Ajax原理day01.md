@@ -50,8 +50,8 @@
 	- 解决了上面所有加密算法的问题
 
 #### 3.使用表单进行文件上传
-#### 4.响应状态码
-![](/Users/W-Q/Pictures/screenshot/Snip20170703_1.png)- `status code` : 状态码 + 原因短语
+####4.响应状态码
+![](/Users/W-Q/Desktop/GIT演练/html-css-js-jquery/image/Snip20170703_1.png)- `status code` : 状态码 + 原因短语
 - 作用
 	- 在我们进行接口调试的时候,可以通过状态码来初步判断当前请求的情况如何
 	- 请求失败
