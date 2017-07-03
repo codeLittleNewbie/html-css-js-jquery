@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-多级联动</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/Ajax.js"></script>
+    <script src="js/template.js"></script>
+    <script type="text/html" id="prov">
+        {{if msg}}
+            {{each msg}}
+                <option name={{$index}}>{{$index}}</option>
+            {{/each}}
+        {{/if}}
+    </script>
+    <script type="text/html" id="ci">
+        {{if a}}
+            {{each a}}
+                <option value={{$value}}>{{$value}}</option>
+            {{/each}}
+        {{/if}}
+    </script>
+    <script>
+        /**
+         * 多级联动小技巧
+         *  - 可以先设置第一条,然后触发一下第一条的change事件
+         *  -
+         */
+
+        function getOption(data, type) {
+            if (type == "province") {
+                var html = template("prov", data);
+                $("#province").html(html);
+            }
+            else if (type == "city") {
+                var html = template("ci", data);
+                $("#city").html(html);
+            }
+        }
+        function sendRequest(type,value) {
+            $.ajax({
+                url: "php/多级联动.php",
+                dataType: "text",
+                success: function (data) {
+                    data = eval("(" + data + ")");
+                    if (type == "city"){
+                        var obj = {a : data.msg[value]};
+                        getOption(obj, "city");
+                    }else if(type == "province"){
+                        getOption(data, type);
+                    }
+
+                }
+            });
+        }
+
+        $(function () {
+            // 默认选中第一个
+            sendRequest("province");
+
+            // 监听选择框的change事件
+            $("#province").on("change",function () {
+                // 获取当前选中option的value值
+                var value = this.value || "北京";
+
+                // 发送网络请求
+                sendRequest("city",value);
+            }).triggerHandler("change");
+        })
+    </script>
+</head>
+<body>
+<select name="province" id="province"></select>
+<select name="city" id="city"></select>
+</body>
+</html>
