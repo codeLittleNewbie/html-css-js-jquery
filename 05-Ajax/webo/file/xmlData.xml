@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<products>
+    <product id="nz">
+        <title>时尚女装</title>
+        <des>时尚时尚最时尚，我的公主裙</des>
+        <img>images/1.webp</img>
+    </product>
+    <product id="bb">
+        <title>时尚宝宝</title>
+        <des>最贵的宝宝，只卖99元</des>
+        <img>images/2.webp</img>
+    </product>
+    <product id="xz">
+        <title>品牌鞋子</title>
+        <des>厂长是我表哥，10块钱一双</des>
+        <img>images/3.webp</img>
+    </product>
+</products>

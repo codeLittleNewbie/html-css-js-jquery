@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取第三方天气数据</title>
+    <style type="text/css">
+        #div1{
+            position:relative;
+            left: 50%;
+            background: lightGreen;
+            width: 300px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            margin-left: -150px;
+            padding-bottom: 20px;
+        }
+        #div1 select{
+            margin-left : 80px;
+            margin-top : 10px;
+            height: 30px;
+        }
+        #div1 input{
+            height: 30px;
+        }
+        #div1 div{
+            width: 300px;
+            background: lightBlue;
+            border-bottom: red solid 1px;
+        }
+        #div1 div ul li{
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        .div2{
+            display: none;
+        }
+    </style>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/template.js"></script>
+    <script type="text/html" id="test">
+        {{if weather}}
+            {{each weather as value}}
+            <div class="div2">
+                <span>日期:{{value.date}}</span>
+                <ul>
+                    <li>白天天气:{{value.info.day[1]}}</li>
+                    <li>白天温度:{{value.info.day[2]}}</li>
+                    <li>白天风向:{{value.info.day[3]}}</li>
+                    <li>白天风速:{{value.info.day[4]}}</li>
+                </ul>
+                <ul>
+                    <li>晚上天气:{{value.info.night[1]}}</li>
+                    <li>晚上温度:{{value.info.night[2]}}</li>
+                    <li>晚上风向:{{value.info.night[3]}}</li>
+                    <li>晚上风速:{{value.info.night[4]}}</li>
+                </ul>
+            </div>
+            {{/each}}
+        {{/if}}
+    </script>
+
+    <script>
+        // http://cdn.weather.hao.360.cn/api_weather_info.php?app=hao360&_jsonp=abc&code=101010100
+
+        function loadWeather(code,fileName) {
+            // 给window创建一个属性
+            window[fileName] = function (data) {
+                // 调用模板
+                var html = template("test",data);
+                $("#info").html(html);
+                $(".div2").slideDown(1000);
+            };
+
+            // 1.创建一个script
+            var scriptDom = document.createElement("script");
+            scriptDom.setAttribute("src","http://cdn.weather.hao.360.cn/api_weather_info.php?app=hao360&_jsonp="+ fileName +"&code=" + code);
+
+            // 将script标签追加到body后面
+            document.body.appendChild(scriptDom);
+        }
+
+        $(function () {
+            // 监听按钮的点
+            $("#city").on("change",function () {
+                // 获取文本框value值
+                var value = this.value;
+
+                // 清空当前数据
+                $(".div2").slideUp(1000);
+
+                $("#btn").on("click",function () {
+                    // 随机生成函数名
+                    var fileName = "jQuery" + new Date().getTime();
+
+                    // 加载天气信息
+                    loadWeather(value,fileName);
+                });
+            }).triggerHandler("change");
+
+        })
+    </script>
+</head>
+<body>
+<div id="div1">
+    <select id="city">
+        <option value="101010100">北京</option>
+        <option value="101020100">上海</option>
+        <option value="101280101">广州</option>
+        <option value="101280601">深圳</option>
+    </select>
+    <input type="button" value="查看天气" id="btn">
+    <div id="info">
+
+    </div>
+</div>
+</body>
+</html>

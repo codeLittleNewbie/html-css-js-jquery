@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-微博小案例</title>
+    <link rel="stylesheet" href="style/common.css">
+    <link rel="stylesheet" href="style/weibo.css">
+    <link rel="stylesheet" href="style/weibo_bak.css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script>
+        $(function () {
+            // 1.监听按钮的点击
+//            $(".inputs").on("click",function () {
+            console.log("--");
+            console.log($("#btn_send"));
+
+
+            $("#btn_send").click(function () {
+
+                // 1.1.获取文本框内容
+                var textValue = $("#submitText").val();
+
+                // 1.2.发送网络请求
+                $.ajax({
+                    url: "weibo.php",
+                    //type : "GET",
+                    //dataType : "json",
+                    data: {
+                        act: "add",
+                        content: textValue
+                    },
+                    beforeSend: function () {
+                        console.log("正在拼命加载数据");
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                })
+            })
+
+        })
+    </script>
+    <script src="js/jquery-3.2.1.js"></script>
+</head>
+<body>
+<div class="xmgArea">
+    <!--留言-->
+    <div class="takeComment">
+        <textarea name="textarea" class="takeTextField" id="submitText"></textarea>
+        <div class="takeSbmComment">
+            <input id="btn_send" type="button" class="inputs" value=""/>
+            <span>(可按 Enter 回复)</span>
+        </div>
+    </div>
+    <!--预留-->
+    <div class="commentOn">
+        <!--<div class="noContent">暂无留言</div>-->
+        <div id="messList" class="messList">
+            <!--<div class="reply">
+                <p class="replyContent">卫士，新款卫士将推出总共14种车身式样。其中， XS旅行款车型售价为32295英镑(约33.6万元)。</p>
+                <p class="operation">
+                    <span class="replyTime">2011-09-08 16:37:60</span>
+                    <span class="handle">
+                        <a href="javascript:;" class="top">0</a>
+                        <a href="javascript:;" class="down_icon">0</a>
+                        <a href="javascript:;" class="cut">删除</a>
+                    </span>
+                </p>
+            </div>-->
+        </div>
+        <div id="page" class="page">
+
+            <a href="javascript:;" class="active">1</a>
+            <a href="javascript:;">2</a>
+            <a href="javascript:;">3</a>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
