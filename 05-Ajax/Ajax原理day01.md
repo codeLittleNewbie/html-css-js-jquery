@@ -51,7 +51,7 @@
 
 #### 3.使用表单进行文件上传
 #### 4.响应状态码
-![](../../image/Snip20170703_1.png)- `status code` : 状态码 + 原因短语
+![](.././image/Snip20170703_1.png)- `status code` : 状态码 + 原因短语
 - 作用
 	- 在我们进行接口调试的时候,可以通过状态码来初步判断当前请求的情况如何
 	- 请求失败
@@ -133,8 +133,6 @@ function ajax(data) {
         xhr.open(method, url, true);
         xhr.send(null);
     } else {
-
-
         xhr.open(method, url, true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send(paramStr)
@@ -147,7 +145,6 @@ function ajax(data) {
                 // 清除定时器
                 clearInterval(timer);
                 data.success(xhr.responseText);
-
             } else {
                 data.error("请求错误");
             }
@@ -161,3 +158,33 @@ function ajax(data) {
     }, timerout);
 }
 ```
+
+#### 7.join方法
+- 数组方法
+	- 作用
+		- 将数组元素通过特定字符拼接输出
+	
+	```js
+	var arr = [a,b,23];
+	console.log(arr.join("@")); // a@b@23
+	```
+
+#### 8.php一些操作
+- 获取get | post请求参数
+	- `$_GET` | `$_POST` | `$_REQUEST`
+- 获取上传的文件
+	- `$_file`
+- 加载数据
+	- `get_content_file("fileAddress")`
+- 设置编码
+	- `header("content-type: text/html; charset-utf-8")`
+	- 表单发送请求时enctype默认为`application/x-www-form-urlencoded`
+- json对象 --> php对象
+	- `json_decode(json);`
+- php对象 --> json对象
+	- `json_encode($json);`
+- json对象 --> js对象
+	- `JSON.parse(json);`
+	- `eval("("+ json +")");`
+- js对象 --> json对象
+	- `JSON.stringity();`

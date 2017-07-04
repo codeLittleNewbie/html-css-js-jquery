@@ -24,7 +24,11 @@ function ajax(obj){
 		var scriptDom = $("<script></script>");
 		
 		// 给script标签设置src属性
-		scriptDom.attr("src",obj.url + "?_jsonp=" + attrName);
+		if (data.jsonp){
+            scriptDom.attr("src",url + "?"+ data.jsonp +"=" + attrName);
+        }else {
+            scriptDom.attr("src",url + "?_jsonp=" + attrName);
+        }
 		
 		// 将script标签追加到body的后面
 		scriptDom.appendTo($("body"));

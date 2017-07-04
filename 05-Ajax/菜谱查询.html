@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-菜谱查询</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/template-web.js"></script>
+    <script type="text/html" id="tpl">
+        {{if data}}
+            {{each data value index}}
+                <h1>{{data[index].title}}</h1>
+                <p>标签 : {{data[index].tags}}</p>
+                <p>介绍{{data[index].imtro}}</p>
+                <div>调味料 : {{data[index].burden}}</div>
+                <div>材料 : {{data[index].ingredients}}</div>
+                <img src={{data[index].albums[0]}}>
+                <ul>
+                    <% for(var i = 0;i < data[index].steps.length;i++) { %>
+                    <li>
+                        <img src=<%= data[index].steps[i].img %>>
+                        <div class="step">{{data[index].steps[i].step}}</div>
+                    </li>
+                    <% } %>
+                </ul>
+                <hr>
+            {{/each}}
+        {{/if}}
+    </script>
+
+    <script>
+        // http://apis.juhe.cn/cook/query?key=&menu=%E8%A5%BF%E7%BA%A2%E6%9F%BF&rn=10&pn=3
+
+        $(function () {
+            // 监听按钮的点击
+            $("#search").on("click", function () {
+                // 提示正在就加载数据
+                $("#tip").text("正在拼命加载数据中...");
+
+                // 获取输入框中的内容
+                var val = $("#txtSearch").val();
+
+                // 处理路径
+                var url = "http://apis.juhe.cn/cook/query?key=946ee4e9d76fa0eff28afe77ce874ce1&rn=3&pn=0&menu=";
+                // 发送网络请求
+                $.ajax({
+                    url: url + val,
+                    type: "GET",
+                    dataType: "jsonp",
+                    success: function (data) {
+                        // 清除提示信息
+                        $("#tip").text("");
+
+                        // 没有加载到数据
+                        if (data.resultcode != 200) {
+                            $("#tip").text("亲,加载失败了..")
+                        }
+
+                        // 调用模板,添加数据
+                        var html = template("tpl", data.result);
+                        $("#food").html(html).slideDown(2000);
+
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                })
+            });
+
+            // 监听enter的按下事件
+            $("#txtSearch").on("keydown",function (event) {
+                if (event.keyCode == 13){
+                    $("#search").trigger("click");
+                }
+            })
+        })
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            margin: 100px auto;
+            width: 500px;
+            text-align: center;
+        }
+
+        #food {
+            background-color: deepskyblue;
+            border: 1px solid #000;
+            text-align: left;
+            display: none;
+        }
+
+        .step {
+            font-size: 20px;
+            color: red;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <input type="text" id="txtSearch">
+    <button id="search">开始查询</button>
+    <div id="tip"></div>
+    <div id="food">
+
+    </div>
+</div>
+</body>
+</html>
