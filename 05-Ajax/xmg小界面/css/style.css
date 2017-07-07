@@ -1,0 +1,192 @@
+#header{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+}
+
+#search{
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    top: 100px;
+    background: #fff;
+}
+#search .search_box{
+    width: 900px;
+    height: 100px;
+    line-height: 100px;
+    margin: 0 auto;
+}
+
+.search_left{
+    float: left;
+}
+.search_left img{
+    width: 130px;
+    /*opacity: 0;*/
+    display: none;
+}
+
+
+.search_right {
+    float: right;
+    margin-right: 100px;
+}
+
+.search_right input[type=text]{
+    width: 530px;
+    height: 44px;
+    border: 1px solid red;
+    font-size: 18px;
+    padding: 0 10px;
+}
+
+.search_right input[type=submit]{
+    width: 100px;
+    height: 44px;
+    background-color: red;
+    color: white;
+    margin-left: -5px;
+    font-size: 18px;
+}
+
+#content{
+
+    margin: 100px auto;
+    width: 900px;
+    height: 535px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+#content ol{
+    text-align: center;
+    font-size: 13px;
+    height: 46px;
+    border: 1px solid #ccc;
+}
+
+#content ol li{
+    width: 88px;
+    height: 44px;
+    float: left;
+    line-height: 44px;
+    padding: 0 10px;
+}
+.cur {
+    background-color: #666666;
+    color: white;
+}
+
+#content ul li{
+    width: 900px;
+    height: 44px;
+    line-height: 44px;
+    border: 1px solid #cccccc;
+    border-top:none;
+}
+
+#content ul li span:nth-child(2) {
+    margin-left: 5px;
+}
+
+#content ul li input[type=checkbox]{
+    margin-left: 10px;
+}
+
+.det, .del{
+    float: right;
+    width: 24px;
+    height: 44px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.ulItem{
+    display: none;
+}
+
+.current{
+    display: block;
+}
+
+.mask{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100,100,100,0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.mask .mask_content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    height: 300px;
+    margin-left: -150px;
+    margin-top: -150px;
+    font-size: 13px;
+    background-color: white;
+}
+
+.mask .mask_title{
+    height: 44px;
+    width: 280px;
+    line-height: 44px;
+    margin: 0 auto;
+}
+
+.mask .mask_title .close{
+    float: right;
+}
+
+.mask .mask_value{
+    text-align: center;
+}
+.mask .mask_value textarea{
+    width: 280px;
+    height: 150px;
+    font-size: 15px;
+    padding: 5px 10px;
+    border: 1px solid red;
+    background-color: #ccc;
+}
+
+.mask .mask_time {
+    width: 280px;
+    height: 65px;
+    margin: 0 auto;
+}
+
+.mask .mask_time input[type=text]{
+    width: 280px;
+    height: 40px;
+    font-size: 18px;
+    background-color: #ccc;
+    padding: 0px 10px;
+}
+
+.mask .refreshBtn{
+    width: 40px;
+    height: 28px;
+    background-color: red;
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    float: right;
+    text-align: center;
+    margin-right: 10px;
+    line-height: 28px;
+}
+
+#returnTop{
+    width: 36px;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    display: none;
+}

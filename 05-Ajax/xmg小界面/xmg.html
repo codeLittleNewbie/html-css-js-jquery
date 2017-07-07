@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/store.legacy.min.js"></script>
+    <script src="js/template-web.js"></script>
+    <script type="text/html" id="tmp"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/index.js"></script>
+    <script src="js/jquery.datetimepicker.full.js"></script>
+    <link rel="stylesheet" href="css/jquery.datetimepicker.css">
+</head>
+<body>
+<!--头部-->
+<div id="header">
+    <img src="image/logo.png" alt="">
+</div>
+
+<!--搜索-->
+<div id="search">
+    <div class="search_box">
+        <div class="search_left">
+            <img src="image/logo.png" alt="" id="sImg">
+        </div>
+        <div class="search_right">
+            <form action="#">
+                <input type="text">
+                <input type="submit" value="添加">
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--内容-->
+<div id="content">
+    <ol>
+        <li class="cur">待办事项</li>
+        <li>已完成事项</li>
+    </ol>
+    <ul class="ulItem current">
+        <li>
+            <!--<input type="checkbox">-->
+            <!--<span>我是span</span>-->
+            <!--<span class="det">详情</span>-->
+            <!--<span class="del">删除</span>-->
+        </li>
+    </ul>
+    <ul class="ulItem">
+        <li>
+            <!--<input type="checkbox">-->
+            <!--<span>我是span</span>-->
+            <!--<span class="det">详情</span>-->
+            <!--<span class="del">删除</span>-->
+        </li>
+    </ul>
+</div>
+
+<!--返回顶部-->
+<img src="image/Top.jpg" id="returnTop">
+
+<!--蒙版-->
+<div class="mask">
+    <div class="mask_content">
+        <div class="mask_title">
+            <span class="title">标题</span>
+            <span class="close">关闭</span>
+        </div>
+        <div class="mask_value">
+            <textarea name="content"></textarea>
+        </div>
+        <div class="mask_time">
+            <div>提醒时间</div>
+            <input type="text">
+        </div>
+        <div class="refreshBtn">更新</div>
+    </div>
+</div>
+
+<!--音频-->
+<audio src="4188.mp3"></audio>
+</body>
+</html>

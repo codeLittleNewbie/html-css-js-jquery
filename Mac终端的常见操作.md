@@ -37,3 +37,7 @@
 - rmdir direction	删除文件夹
 
 - cat fileName 查看文本内容
+
+#### 其他
+- macOS -> 10.12 之后没有了打开任何来源的按钮
+	- `sudo spctl --master-disable`
