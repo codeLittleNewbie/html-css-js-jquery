@@ -8,7 +8,7 @@
 // 1.获取canvas标签
 var canvas = document.querySelector("canvas");
 
-// 2.获取canvas的图形山下文
+// 2.获取canvas的图形上下文
 // 如果是获取3D,那么参数传入的是webgl
 var ctx = canvas.getContext("2d");
 
