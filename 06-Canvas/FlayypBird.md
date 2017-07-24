@@ -193,3 +193,58 @@ pause:function () {
 
 - 53.`Game.js gameOver(){}`
 	- 发出通知,鸟死了 `this.bird.die = true;`
+
+### 10.抛热血
+- 54.`Game.js`
+
+```js
+// 检测游戏是否结束 属性
+this.isGameOver = false;
+```
+55.`Game.js gameOver(){} this.isGameOver = true;`
+
+56.`Game.js runloop()` 初始化管道 , 运行
+
+```js
+// 初始化管道 (gameOver的时候,不初始化管道了)
+if(!this.isGameOver && this.frameUtil.currentFrame %100 == 0){
+  this.pipeArr.push(new Pipe());
+}
+```
+- 57.`Bird.js render()` 绘制小鸟死亡出血动画
+
+- 58.`Bird.js render()` 求出行和列,改写绘制参数
+
+```js
+添加属性
+鸟死亡的动画索引
+this.dieAnimationIndex = 0;
+```
+
+- 59.`Bird.js update(){}`
+
+```js
+死亡帧动画
+if(this.die){
+this.dieAnimationIndex++;
+    if(this.dieAnimationIndex == 30){
+        game.pause();
+     }
+      return;
+}
+
+// 绘制热血x 减100, 运行
+```
+- 60.绘制游戏结束
+
+```js
+Bird.js render()
+game.context.drawImage(game.allImageObj["gameover"],
+(game.canvas.width - 626)*0.5, 
+(game.canvas.height -144) *0.5);
+```
+
+- 61.调整画布宽高
+
+### 11 结束
+- thankyou!! ☺☺☺
